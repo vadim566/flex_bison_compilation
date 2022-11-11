@@ -1,0 +1,16 @@
+%{
+	#include <assert.h>
+%}
+
+%%
+. ECHO;
+%%
+int yywrap(){return 1;}
+void main(int argc, char* argv[])
+{
+	yyin=fopen(argv[1],"r");
+	assert(yyin);
+	yylex();
+	fclose(yyin);
+	return;
+}
