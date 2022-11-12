@@ -1,0 +1,6 @@
+
+Integer:5
+Operator:*
+Integer:5
+Operator:=
+Integer:25
