@@ -1,0 +1,25 @@
+%option noyywrap
+%{
+#include<stdio.h>
+#include <string.h>
+
+%}
+%%
+"YARDEN"|"Yarden" {fprintf(yyout, "KINERET");}
+"http://www.jvc.ac.il" {fprintf(yyout, "http://www.kineret.ac.il");}
+"Bela Raz" {fprintf(yyout, "Rina ZG");}
+"Michael Gordon" {fprintf(yyout, "Gidi Cohen");}
+. ECHO;
+%%
+void main(int argc, char* argv[])
+{
+	yyin=fopen(argv[1],"r");
+	char str[50]="YKinput-";
+	strcat(str, argv[1]);
+
+	yyout=fopen(str,"w");
+
+	yylex();
+	fclose(yyin);	
+	fclose(yyout);
+}
